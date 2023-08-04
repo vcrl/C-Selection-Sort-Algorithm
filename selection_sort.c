@@ -7,34 +7,40 @@ int main(int argc, char* argv[])
 {
     int list[] = {3, 1, 2, 5, 4};
     sort(list);
+    for (int i = 0; i < lenlist; i++)
+    {
+        printf("%i ", list[i]);
+    }
     return 0;
 }
 
 void sort(int list[])
 {   
+    // 3 1 2
+    // i
+    //   j     i+1
+    // if j < i 
+    // smaller = j;
+    // if smaller != i
+    // 1 3 2
+    // 
 
     for (int i = 0; i < lenlist - 1; i++)
     {
-        int smallest = i;
-        // Step 1. Finding the lowest value
+        int smaller = i;
         for (int j = i + 1; j < lenlist; j++)
         {
-            if (list[j] < list[smallest]) // i + 1 to avoid checking itself
+            if (list[j] < list[smaller])
             {
-                smallest = j;
+                smaller = j;
             }
         }
-        if (smallest != i) // don't swap itself
+        printf("Smaller: %i\n", smaller);
+        if (smaller != i)
         {
-            int temp = list[i];
-            list[i] = list[smallest];
-            list[smallest] = temp;
+            int swap = list[i];
+            list[i] = list[smaller];
+            list[smaller] = swap;
         }
     }
-
-    for (int i = 0; i < lenlist; i++)
-    {
-        printf("%i", list[i]);
-    }
-    printf("\n");
 }
